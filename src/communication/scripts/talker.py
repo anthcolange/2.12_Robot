@@ -35,11 +35,15 @@
 
 ## Simple talker demo that published std_msgs/Strings messages
 ## to the 'chatter' topic
-
 import rospy
-import listener  #File containing functions for voice commands
+import Word_functions  #File containing functions for voice commands
 from std_msgs.msg import String
-with open('speechoutput.txt', "r+") as Wordfile:
+
+pub = rospy.Publisher('command', String, queue_size=10)
+rospy.init_node('voice', anonymous=True)
+rate = rospy.Rate(10) # 10hz
+
+with open('full_robot/src/communication/scripts/speechoutput.txt', "r+") as Wordfile:
     while True: #Run Continuously
             data = Wordfile.readline()
             to_truncate = bool(data)
@@ -49,23 +53,13 @@ with open('speechoutput.txt', "r+") as Wordfile:
                 data = data[i+1:]
             if data:
                 if data in Word_functions.FullDictionary:
-                    print(len(data), data)
-                    print(Word_functions.FullDictionary[data]())
+                    print(Word_functions.FullDictionary[data]()[0])
+                    pub.publish(Word_functions.FullDictionary[data]()[1])
                 else:
                     print(data, "not in dictionary")
             if to_truncate:
                 Wordfile.seek(0)
                 Wordfile.truncate()
-def talker():
-    pub = rospy.Publisher('command', String, queue_size=10)
-    rospy.init_node('voice', anonymous=True)
-    rate = rospy.Rate(10) # 10hz
-    while not rospy.is_shutdown():
-        hello_str = "hello world %s" % rospy.get_time()
-        rospy.loginfo(hello_str)
-        pub.publish(hello_str)
-
-        rate.sleep()
 
 if __name__ == '__main__':
     try:
