@@ -1,0 +1,8 @@
+prefix=/home/anthony/full_robot/devel
+
+Name: communication
+Description: Description of communication
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/anthony/full_robot/devel/lib 
+Requires: 

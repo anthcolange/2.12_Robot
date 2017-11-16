@@ -1,0 +1,58 @@
+All Voice Commands
+
+Task A-1: Open Drawer
+"start drawer task"
+"open"
+“close” 
+“done”
+Test A-2: Wrap garment
+"start garment task"
+"hold"
+“wrap”
+"release"
+"done"
+Task B-1: Medicine Bottle
+"start medicine task"
+“fetch”
+“incorrect"
+"done"
+Task B-2: Bedding
+"start bedding task"
+“grasp”
+"make"
+"pause”
+“done"
+
+{"start" : start_drawer_task(), "open" : 
+					open_drawer(), "close" : close_drawer(), "done" : drawer_done(), 
+					"begin" : start_garment_task(), "hold" : hold_garment(),
+					"wrap" : start_wrapping(), "release" : let_go(), 
+					"commence" : start_medicine_task(), 
+					"fetch" : fetch_the_medicine_bottle(),
+					"correct" : correct_bottle(), "wrong" : incorrect_bottle(), 
+					"complete" : bottle_done(), "bedding" : start_bedding_task(), 
+					"grasp" : hold_blanket(), "make" : start_bedding(),
+					"pause" : pause_bedding(), "finish" : bedding_done()
+
+Task A-1: Open Drawer
+"start drawer task"
+"open"
+“close” 
+“done”
+Test A-2: Wrap garment
+"start garment task"
+"hold"
+“wrap”
+"release"
+"done"
+Task B-1: Medicine Bottle
+"start medicine task"
+“fetch”
+“incorrect"
+"done"
+Task B-2: Bedding
+"start bedding task"
+“grasp”
+"make"
+"pause”
+“done"

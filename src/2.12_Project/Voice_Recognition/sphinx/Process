@@ -1,0 +1,18 @@
+https://cmusphinx.github.io/wiki/tutoriallm/
+
+Seperate by task or not
+
+cd 2.12_Project/Voice_Recognition/sphinx/
+pocketsphinx_continuous -inmic yes -lm 7105.lm -dict 7105.dic   ##Change numbers to name
+For all tasks: total
+For drawer task: drawer
+For garment task: garment
+For medicine task: medicine
+For bedding task: bedding
+
+pocketsphinx_continuous -inmic yes -lm bedding.lm -dict bedding.dic | tee speechoutput.txt  ##Change for task, updates text file 
+
+-Open two terminals : 
+-cd 2.12_Project/Voice_Recognition/sphinx/  in both
+-pocketsphinx_continuous -inmic yes -lm bedding.lm -dict bedding.dic | tee speechoutput.txt   
+-python Word_interpreter.py 

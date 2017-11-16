@@ -1,0 +1,6 @@
+import sys
+import time
+
+with open("test.txt", "w") as f:
+	while True:
+		f.write(str(sys.argv))

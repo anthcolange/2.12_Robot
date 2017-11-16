@@ -1,0 +1,10 @@
+/home/anthony/full_robot/install/_setup_util.py
+/home/anthony/full_robot/install/env.sh
+/home/anthony/full_robot/install/setup.bash
+/home/anthony/full_robot/install/setup.sh
+/home/anthony/full_robot/install/setup.zsh
+/home/anthony/full_robot/install/.rosinstall
+/home/anthony/full_robot/install/lib/pkgconfig/communication.pc
+/home/anthony/full_robot/install/share/communication/cmake/communicationConfig.cmake
+/home/anthony/full_robot/install/share/communication/cmake/communicationConfig-version.cmake
+/home/anthony/full_robot/install/share/communication/package.xml

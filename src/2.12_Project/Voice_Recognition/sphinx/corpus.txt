@@ -1,0 +1,19 @@
+start drawer task
+open
+close 
+stop
+start garment task
+open
+close
+wrap
+release
+stop
+start medicine task
+fetch
+incorrect
+done
+start bedding task
+grasp
+make
+pause
+done
