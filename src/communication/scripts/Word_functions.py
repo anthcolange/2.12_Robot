@@ -36,6 +36,16 @@ def bedding_done():
     return ("Bedding task done",'18')
 def done():
     return ("Done",'19')
+def purple_obstacle():
+    return ("Obstacle is Purple",'purple obstacle')
+def green_obstacle():
+    return ("Obstacle is Green",'green obstacle')
+def green_bottle():
+    return ("Bottle is Green",'green bottle')
+def yellow_bottle():
+    return ("Bottle is Yellow",'yellow bottle')
+def red_bottle():
+    return ("Bottle is Red",'red bottle')
 FullDictionary = {"START DRAWER TASK" : start_drawer_task, "OPEN" : 
                     open_drawer, "CLOSE" : close_drawer, "DONE" : done, 
                     "START GARMENT TASK" : start_garment_task, "HOLD" : hold_garment,
@@ -45,4 +55,7 @@ FullDictionary = {"START DRAWER TASK" : start_drawer_task, "OPEN" :
                     "CORRECT" : correct_bottle, "INCORRECT" : incorrect_bottle, 
                     "COMPLETE" : bottle_done, "START BEDDING TASK" : start_bedding_task, 
                     "GRASP" : hold_blanket, "MAKE" : start_bedding,
-                    "PAUSE" : pause_bedding, "FINISH" : bedding_done  }
+                    "PAUSE" : pause_bedding, "FINISH" : bedding_done, "GREEN BOTTLE" : green_bottle, "YELLOW BOTTLE" : yellow_bottle, 
+                    "RED BOTTLE" : red_bottle  }
+FullDictionary_Nav= {"PURPLE OBSTACLE" : purple_obstacle, "GREEN OBSTACLE" : 
+                    green_obstacle}

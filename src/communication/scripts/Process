@@ -1,8 +1,5 @@
 https://cmusphinx.github.io/wiki/tutoriallm/
 
-Seperate by task or not
-
-cd 2.12_Project/Voice_Recognition/sphinx/
 pocketsphinx_continuous -inmic yes -lm 7105.lm -dict 7105.dic   ##Change numbers to name
 For all tasks: total
 For drawer task: drawer
@@ -10,9 +7,33 @@ For garment task: garment
 For medicine task: medicine
 For bedding task: bedding
 
-pocketsphinx_continuous -inmic yes -lm bedding.lm -dict bedding.dic | tee speechoutput.txt  ##Change for task, updates text file 
 
--Open two terminals : 
--cd 2.12_Project/Voice_Recognition/sphinx/  in both
--pocketsphinx_continuous -inmic yes -lm bedding.lm -dict bedding.dic | tee speechoutput.txt   
--python Word_interpreter.py 
+----------------------------------------------------------------------------------------------
+Reconnect Bluetooth
+-Terminal 1:
+	roscore
+-Terminal 2:
+	cd full_robot/src/communication/scripts
+	pocketsphinx_continuous -inmic yes -lm total.lm -dict total.dic > speechoutput.txt  
+-Terminal 3:
+	rosrun communication listener.py
+-Terminal 4:
+	rosrun communication talker.py 
+
+
+To Do: 
+Finalize commands
+	-Make sure has everything arm needs
+Eliminate noise
+	-Maybe make commands longer to fight misreads
+	-Find optimal mic detection level
+Can't kill talker.py terminal
+How to get data from subscriber to arm 
+Clean up workspace
+Bluetooth mic doesn't connect without removing
+Why are there two voice nodes and why those numbers
+Reduce the 4 terminals, Procman?? https://github.com/adamcooke/procman
+
+withnav has additional words for navigation team
+withfiller filled with 100 most common words
+data.split 

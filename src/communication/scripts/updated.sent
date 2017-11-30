@@ -1,0 +1,23 @@
+<s> START DRAWER TASK </s>
+<s> OPEN </s>
+<s> CLOSE </s>
+<s> STOP </s>
+<s> START GARMENT TASK </s>
+<s> OPEN </s>
+<s> CLOSE </s>
+<s> WRAP </s>
+<s> RELEASE </s>
+<s> STOP </s>
+<s> START MEDICINE TASK </s>
+<s> FETCH </s>
+<s> INCORRECT </s>
+<s> START BEDDING TASK </s>
+<s> GRASP </s>
+<s> MAKE </s>
+<s> PAUSE </s>
+<s> FINISHED </s>
+<s> GREEN OBSTACLE </s>
+<s> PURPLE OBSTACLE </s>
+<s> GREEN BOTTLE </s>
+<s> YELLOW BOTTLE </s>
+<s> RED BOTTLE </s>

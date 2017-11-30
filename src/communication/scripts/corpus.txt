@@ -1,19 +1,23 @@
-start drawer task
-open
-close 
-stop
-start garment task
-open
-close
-wrap
-release
-stop
-start medicine task
-fetch
-incorrect
-done
-start bedding task
-grasp
-make
-pause
-done
+drawer task
+open drawer
+close drawer 
+stop drawer
+garment task
+open arm
+close arm
+wrap garment
+release garment
+stop garment
+medicine task
+fetch medicine
+incorrect bottle
+bedding task
+grasp bedding
+make bedding
+pause bedding
+finished task
+green obstacle
+purple obstacle
+green bottle
+yellow bottle
+red bottle
