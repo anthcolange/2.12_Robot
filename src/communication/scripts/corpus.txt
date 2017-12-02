@@ -1,23 +1,52 @@
-drawer task
-open drawer
-close drawer 
-stop drawer
-garment task
-open arm
-close arm
-wrap garment
-release garment
-stop garment
-medicine task
-fetch medicine
-incorrect bottle
-bedding task
-grasp bedding
-make bedding
-pause bedding
-finished task
-green obstacle
-purple obstacle
-green bottle
-yellow bottle
-red bottle
+Drawer Task
+	ROBOT APPROACH (going to drawer)
+	ROBOT OPEN (opening gripper)
+	ROBOT CLOSE (closing gipper)
+	ROBOT UNLOCK (opening drawer)
+	ROBOT PUSH (closing drawer)
+    ROBOT COMPLETE (task complete) (returning home)
+Garment Task
+	ROBOT OPEN (opening gripper)
+	ROBOT CLOSE (closing gripper)
+	ROBOT WRAP (wrapping garment)
+	ROBOT RETURN (garment task complete)
+Bottle Task
+	ROBOT RETRIEVE (retrieving bottle)
+	ROBOT GREEN JAR (bottle is green)
+	ROBOT BLUE JAR (bottle is blue)
+	ROBOT RED JAR (bottle is red)
+	ROBOT PURPLE BOX (obstacle is purple)
+	ROBOT GREEN BOX (obstacle is green)
+	ROBOT COMPLETE (task complete)
+
+Bedding Task
+	ROBOT CLOSE (closing gripper)
+	ROBOT MAKE (making bed)
+	ROBOT COMPLETE (task complete)
+
+
+
+
+
+
+
+
+Drawer Task
+	ROBOT APPROACH (going to drawer)
+	ROBOT OPEN (opening gripper)
+	ROBOT CLOSE (closing gipper)
+	ROBOT UNLOCK (opening drawer)
+	ROBOT PUSH (closing drawer)
+    ROBOT COMPLETE (returning home)
+Garment Task
+	ROBOT WRAP (Wrap garment)
+Bottle Task
+	ROBOT RETRIEVE (Get bottle)
+	ROBOT GREEN (Green jar)
+	ROBOT BLUE (Blue jar)
+	ROBOT RED (Red jar)
+	ROBOT PURPLE (Purple obstacle)
+	ROBOT GRASS (Green obstacle)
+
+Bedding Task
+	ROBOT MAKE (Make bed)

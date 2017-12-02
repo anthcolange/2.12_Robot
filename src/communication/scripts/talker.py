@@ -39,15 +39,65 @@ import rospy
 import Word_functions  #File containing functions for voice commands
 from std_msgs.msg import String
 import speech_recognition as sr
+import time
+import os
 
 r = sr.Recognizer()
 m = sr.Microphone()
-
 print ("talker opened")
 pub = rospy.Publisher('command', String, queue_size=10)#bottle color
 pub_2 = rospy.Publisher('obs_command', String, queue_size=10) #obstacle color
 rospy.init_node('voice', anonymous=True)
 rate = rospy.Rate(10) # 10hz
+r.dynamic_energy_threshold = False
+try:
+    print("A moment of silence, please...")
+    r.energy_threshold = 3000
+    print("Set minimum energy threshold to {}".format(r.energy_threshold))
+    while True:
+        print("Say something!")
+        with m as source: 
+            audio = r.listen(source)
+        print("Got it! Now to recognize it...")
+        try:
+            # recognize speech using Google Speech Recognition
+            value = r.recognize_google(audio)
+            # we need some special handling here to correctly print unicode characters to standard output
+            if str is bytes:  # this version of Python uses bytes for strings (Python 2)
+                print(u"You said {}".format(value).encode("utf-8"))
+                data=(format(value).encode("utf-8")).upper()
+                words=data.split(" ")
+                first=(words[0])
+                matches=set(words).intersection(Word_functions.WordList)
+                matches_nav=set(words).intersection(Word_functions.WordList_Nav)
+                if "CLOSE" in words:
+                    print("ROBOT CLOTHES")
+                    pub.publish(Word_functions.FullDictionary["CLOTHES"]()[1])
+                    os.system("espeak '%s'" % Word_functions.FullDictionary["CLOTHES"]()[0])
+                elif len(matches)>0:
+                    print(Word_functions.FullDictionary[max(matches)]()[0])
+                    pub.publish(Word_functions.FullDictionary[max(matches)]()[1])
+                    os.system("espeak '%s'" % Word_functions.FullDictionary[max(matches)]()[0])
+                elif len(matches_nav)>0: 
+                    print(Word_functions.FullDictionary_Nav[max(matches_nav)]()[0])
+                    pub_2.publish(Word_functions.FullDictionary_Nav[max(matches_nav)]()[1])
+                    os.system("espeak '%s'" % Word_functions.FullDictionary_Nav[max(matches_nav)]()[0])
+                elif (first=="ROBOT"):
+                    os.system("espeak '%s'" % "I am good, how are you master")
+                else:
+                    print(data, "not in dictionary")
+        
+        except sr.UnknownValueError:
+            print("Oops! Didn't catch that")
+        except sr.RequestError as e:
+            print("Uh oh! Couldn't request results from Google Speech Recognition service; {0}".format(e))
+except KeyboardInterrupt:
+    pass
+if __name__ == '__main__':
+    try:
+        talker()
+    except rospy.ROSInterruptException:
+        pass
 
 #with open('full_robot/src/communication/scripts/speechoutput.txt', "r+") as Wordfile:
 #    while True: #Run Continuously
@@ -69,42 +119,11 @@ rate = rospy.Rate(10) # 10hz
 #            if to_truncate:
 #                Wordfile.seek(0)
 #                Wordfile.truncate()
-try:
-    print("A moment of silence, please...")
-    with m as source: r.adjust_for_ambient_noise(source)
-    #r.energy_threshold = 150
-    print("Set minimum energy threshold to {}".format(r.energy_threshold))
-    while True:
-        print("Say something!")
-        with m as source: audio = r.listen(source)
-        print("Got it! Now to recognize it...")
-        try:
-            # recognize speech using Google Speech Recognition
-            value = r.recognize_google(audio)
-
-            # we need some special handling here to correctly print unicode characters to standard output
-            if str is bytes:  # this version of Python uses bytes for strings (Python 2)
-                print(u"You said {}".format(value).encode("utf-8"))
-                data=(format(value).encode("utf-8")).upper()
-                if data in Word_functions.FullDictionary:
-                    print(Word_functions.FullDictionary[data]()[0])
-                    pub.publish(Word_functions.FullDictionary[data]()[1])
-                elif data in Word_functions.FullDictionary_Nav: 
-                    print(Word_functions.FullDictionary_Nav[data]()[0])
-                    pub_2.publish(Word_functions.FullDictionary_Nav[data]()[1])
-                else:
-                    print(data, "not in dictionary")
-                print (data)
-            else:  # this version of Python uses unicode for strings (Python 3+)
-                print("You said {}".format(value))
-        except sr.UnknownValueError:
-            print("Oops! Didn't catch that")
-        except sr.RequestError as e:
-            print("Uh oh! Couldn't request results from Google Speech Recognition service; {0}".format(e))
-except KeyboardInterrupt:
-    pass
-if __name__ == '__main__':
-    try:
-        talker()
-    except rospy.ROSInterruptException:
-        pass
+#python -m speech_recognition
+# elif len(words)==2:
+                #     for i in (Word_functions.WordList):
+                #         if list(words[1])[0]==list(i)[0]:
+                #             data="ROBOT " + (i)
+                #             print(Word_functions.FullDictionary[data]()[0])
+                #             pub.publish(Word_functions.FullDictionary[data]()[1])
+                #             os.system("espeak '%s'" % Word_functions.FullDictionary[data]()[0])
